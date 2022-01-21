@@ -10,7 +10,10 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    font-size: clamp(1.6rem, 5vw, 2rem);
+}
+
+html {
+    background: $col_background;
 }
 
 input::-webkit-outer-spin-button,
@@ -26,9 +29,9 @@ input[type=number] {
 select {
     padding: .4rem;
     font-size: 1.4rem;
-    border: 1px solid $col_border;
+    border: .1rem solid $col_border;
     border-radius: 1rem;
-    height: 34px;
+    height: 3.4rem;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

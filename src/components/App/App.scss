@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $col_background;
-    min-height: 100vh;
+    min-height: calc(100vh - 10rem);
     color: $col_secondary;
+    font-size: clamp(1.6rem, 5vw, 2rem);
 }
