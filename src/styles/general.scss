@@ -16,6 +16,16 @@ html {
     background: $col_background;
 }
 
+::-moz-selection {
+    color: $col_white;
+    background: $col_primary;
+}
+
+::selection {
+    color: $col_white;
+    background: $col_primary;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -36,6 +46,7 @@ select {
     -moz-appearance: none;
     appearance: none;
     background: $col_white;
+    cursor: pointer;
 }
 
 select::-ms-expand { 

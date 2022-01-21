@@ -1,11 +1,15 @@
+import React from 'react';
+import Form from '../Form'
 import './App.scss';
-
 
 function App() {
   return (
-    <div className="app">
+    <main className="app">
+      <Form />
 
-    </div>
+      <div className='container-list'>
+      </div>
+    </main>
   );
 }
 

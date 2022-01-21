@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.btn {
+    padding: 1.5rem 3rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: 150ms;
+    color: $col_white;
+    background: $col_primary;
+    font-size: 1.4rem;
+    font-weight: 400;
+    max-width: 100%;
+    text-align: center;
+
+    &:hover {
+        opacity: .9;
+    }
+
+    &:active {
+        transform: scale(.925);
+    }
+}

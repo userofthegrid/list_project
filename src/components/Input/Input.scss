@@ -1,0 +1,55 @@
+@import '../../styles/variables';
+
+.form__inp-box {
+    position: relative;
+    transition: .5s;
+    margin: 0 0 2.5rem 0;
+    width: 100%;
+
+    &:last-of-type {
+        margin-bottom: 4.5rem;
+    }
+
+    label {
+        color: $col_text_grey;
+        position: absolute;
+        background-color: $col_background;
+        font-weight: 400;
+        font-size: 1.35rem;
+        letter-spacing: .1rem;
+        z-index: 2;
+        top: -.7rem;
+        left: 1rem;
+        padding: 0 .5rem;
+        pointer-events: none;
+        text-align: left;
+        filter: grayscale(1);
+        transition: .33s;
+    }
+}
+
+.inp--small {width: calc(50% - 1.1rem);}
+
+.inp {
+    padding: 1.4rem 1.2rem;
+    background: transparent;
+    border: solid .2rem $col_primary;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    opacity: .25;
+    filter: grayscale(1);
+    transition: .25s;
+    width: 100%;
+
+    &:active,
+    &:focus{
+        outline: none;
+        opacity: 1;
+        filter: grayscale(0);
+    }
+
+    &:focus ~ label {
+        color: $col_primary;
+        filter: grayscale(0);
+    }
+}

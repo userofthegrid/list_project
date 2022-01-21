@@ -1,0 +1,38 @@
+@import '../../styles/variables';
+
+.container-form {
+    max-width: 100%;
+}
+
+.form__title {
+    font-weight: 500;
+    font-size: 4.2rem;
+    margin-bottom: 2rem;
+}
+
+.form__information {
+    width: 42rem;
+    line-height: 2.4rem;
+    max-width: 100%;
+    padding-bottom: 5rem;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: .1rem;
+        width: 75%;
+        background-color: $col_line;
+    }
+}
+
+.form__album-add {
+    margin-top: 5rem;
+    width: 48rem;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
