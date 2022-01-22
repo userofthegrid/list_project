@@ -4,14 +4,14 @@
 .app {
     @include flex-spread-X;
     align-items: flex-start;
-    padding: 2.5rem 1.5rem 5rem;
+    padding: 1.5rem 2rem 2.5rem;
     background-color: $col_background;
     width: $container-width;
     max-width: 100%;
-    margin: 5rem auto 0;
-    min-height: calc(100vh - 15rem);
+    margin: 2.5rem auto 0;
+    min-height: calc(100vh - 10rem);
     color: $col_secondary;
-    font-size: clamp(1.5rem, 3vw, 1.7rem);
+    font-size: clamp(.9rem, 3vw, 1.1rem);
 }
 
 @media only screen and (max-width: 1080px) {
@@ -20,7 +20,8 @@
         @include flex-center-XY;
         flex-direction: column;
         flex-wrap: wrap;
-        margin: 2.5rem auto 0;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 2.5rem;
         min-height: calc(100vh - 6rem);
     }
 }

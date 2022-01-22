@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './styles.scss';
+import TranslateIcon from '@mui/icons-material/Translate';
 
 export default function Language() {
 
@@ -16,7 +17,7 @@ export default function Language() {
   return (
     <div className='languages'>
       <FormControl fullWidth>
-        <InputLabel sx={{ fontSize: 14 }} id="select-label">Język</InputLabel>
+        <InputLabel id="select-label"><TranslateIcon /></InputLabel>
         <Select
           defaultValue={'pl'}
           labelId="select-label"
@@ -24,10 +25,9 @@ export default function Language() {
           value={Language}
           label="Język"
           onChange={handleChange}
-          sx={{ fontSize: 14 }}
         >
-          <MenuItem value={'pl'} sx={{ fontSize: 14 }}>Polish</MenuItem>
-          <MenuItem value={'en'} sx={{ fontSize: 14 }}>English</MenuItem>
+          <MenuItem value={'pl'}>Polski</MenuItem>
+          <MenuItem value={'en'}>English</MenuItem>
         </Select>
       </FormControl>
     </div>

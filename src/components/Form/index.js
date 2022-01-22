@@ -1,44 +1,93 @@
 import React from 'react';
-import Input from '../Input';
+import {v4 as uuidv4} from "uuid";
 import Button from '../Button';
 import './styles.scss';
+import TextField from '@mui/material/TextField';
 
-export default function index() {
-  return (
-    <div className='container-form'>
-        <h2 className='form__title'>Nowy album</h2>
+const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImage, albums, setAlbums}) => {
 
-        <p className='form__information'>
-        W formularzu poniżej możesz dodać informacje dotyczące
-        albumu, który chcesz dodać do swojej listy.
-        </p>
+    const onAlbumChange = (event) => {
+        setTitle(event.target.value)
+    };
+    const onYearChange = (event) => {
+        setYear(event.target.value)
+    };
+    const onTracksChange = (event) => {
+        setTracks(event.target.value)
+    };
+    const onImageChange = (event) => {
+        setImage(event.target.value)
+    };
 
-        <form className='form__album-add'>
-        <Input 
-            children='Nazwa albumu'
-            type='text'
-            inpName='album-name'
-        />
-        <Input 
-            children='Rok wydania'
-            inpStyle='inp--small'
-            type='text'
-            inpName='album-year'
-        />
-        <Input 
-            children='Liczba utworów'
-            inpStyle='inp--small'
-            type='text'
-            inpName='album-track-number'
-        />
-        <Input 
-            children='Link do okładki'
-            type='text'
-            inpName='album-img'
-        />
+    const onAddAlbumSubmit = (event) => {
+        event.preventDefault();
+        setAlbums([...albums, {id: uuidv4(), title: title, year: year, tracks: tracks, image: image, favourite: false}]);
+        setTitle('');
+        setYear('');
+        setTracks('');
+        setImage('');
+    };
+     
 
-        <Button btnStyle="btn--full-width">Dodaj album</Button>
-        </form>
-    </div>
-  );
+    return (
+        <div className='container-form'>
+            <h2 className='form__title'>Nowy album</h2>
+
+            <p className='form__information'>
+                W formularzu poniżej możesz dodać informacje dotyczące
+                albumu, który chcesz dodać do swojej listy.
+            </p>
+
+            <form 
+                className='form__album-add'
+                onSubmit={onAddAlbumSubmit}
+            >
+                <TextField
+                    className='add-task__input add-task__input--long'
+
+                    label='Nazwa albumu'
+                    variant="outlined" 
+                    size="smalll"
+                    value={title}
+                    sx={{ mb: 2.5 }}
+                    onChange={onAlbumChange}
+                />
+                <TextField
+                    className='add-task__input add-task__input--short'
+                    label='Rok wydania'
+                    variant="outlined" 
+                    size="smalll"
+                    value={year}
+                    sx={{ mb: 2.5 }}
+                    onChange={onYearChange}
+                />
+                <TextField
+                    className='add-task__input add-task__input--short'
+                    label='Liczba utworów'
+                    variant="outlined" 
+                    size="smalll"
+                    value={tracks}
+                    sx={{ mb: 2.5 }}
+                    onChange={onTracksChange}
+                />
+                <TextField
+                    className='add-task__input add-task__input--long'
+                    label='Link do okładki'
+                    variant="outlined" 
+                    size="smalll"
+                    value={image}
+                    onChange={onImageChange}
+                />
+                <Button 
+                    btnStyle="btn--full-width btn--add-album"
+                    type='submit'
+                    onClick={onAddAlbumSubmit}
+                >
+                    Dodaj album
+                </Button>
+            </form>
+        </div>
+    );
 }
+
+export default Form;
