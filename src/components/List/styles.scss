@@ -13,8 +13,7 @@
 
 .list__cards-container {
     overflow-y: scroll;
-    height: calc(100vh - 23rem);
-    max-height: 59rem;
+    height: 41rem;
 }
 
 .list__mobi-info {
@@ -27,20 +26,23 @@
 
 .list__settings {
     @include flex-spread-X;
+    align-items: flex-end;
     width: 78rem;
     max-width: 100%;
-    padding-bottom: .8rem;
+    padding-bottom: .2rem;
     border-bottom: .1rem solid $col_line;
     margin-bottom: 2.4rem;
 }
 
-.settings__list-title {font-size: clamp(1.5rem, 5vw, 1.7rem)}
+.settings__list-title {
+    font-size: clamp(1.5rem, 5vw, 1.7rem);
+    margin-bottom: .8rem;
+    font-weight: 500;
+}
 
-.options__label {margin-right: 1rem}
-
-.options__sorting {
-    width: 12rem;
-    margin-right: 1.5rem;
+.settings__options {
+    display: flex;
+    align-items: flex-end;
 }
 
 .options__btn {
@@ -51,6 +53,7 @@
     cursor: pointer;
     opacity: .33;
     transition: .25s;
+    margin-bottom: .5rem;
 
     &:hover {
         opacity: 1;
@@ -195,13 +198,13 @@
 
     .settings__options {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         width: 100%;
         justify-content: flex-end;
     }
 
-    .options__sorting {
-        margin-right: auto;
+    .options__btn:first-of-type {
+        margin-left: auto;
     }
 
 }

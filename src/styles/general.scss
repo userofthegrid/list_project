@@ -43,37 +43,3 @@ html {
     color: $col_white;
     background: $col_primary;
 }
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-select {
-    padding: .4rem;
-    font-size: 1.4rem;
-    border: .1rem solid $col_border;
-    border-radius: 1rem;
-    height: 3.4rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: $col_white;
-    cursor: pointer;
-}
-
-select::-ms-expand { 
-    display: none;
-}
-
-@media screen and (min-width:0\0) {
-    select {
-        background:none\9;
-        padding: 5px\9;
-    } 
-}
