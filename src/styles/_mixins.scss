@@ -1,0 +1,11 @@
+@mixin flex-center-XY {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-spread-X {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

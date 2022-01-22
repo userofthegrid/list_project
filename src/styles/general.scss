@@ -10,10 +10,28 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    scrollbar-color: $col_light_grey $col_white;
+    scrollbar-width: thin;
 }
 
 html {
     background: $col_background;
+}
+
+::-webkit-scrollbar {
+    width: .8rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $col_light_grey;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $col_line; 
+}
+
+::-webkit-scrollbar-track {
+    background: $col_white;
 }
 
 ::-moz-selection {

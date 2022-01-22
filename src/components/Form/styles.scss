@@ -1,12 +1,12 @@
 @import '../../styles/variables';
 
 .container-form {
-    max-width: 100%;
+    max-width: 40%;
 }
 
 .form__title {
     font-weight: 500;
-    font-size: 4.2rem;
+    font-size: clamp(3.6rem, 5vw, 4.2rem);
     margin-bottom: 2rem;
 }
 
@@ -35,4 +35,31 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+@media only screen and (max-width: 1080px) {
+
+    .container-form {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 6rem;
+    }
+
+    .form__information {
+        margin: 0 auto;
+        padding-bottom: 2.5rem;
+
+        &::after {
+            width: 100%;
+        }
+    }
+
+    .form__album-add {
+        margin-top: 3.5rem;
+        width: 64rem;
+    }
+
+    .form__inp-box:last-of-type {
+        margin-bottom: 2.5rem;
+    }
 }

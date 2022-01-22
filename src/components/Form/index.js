@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../Input';
-import Button from '../Button'
-import './Form.scss';
+import Button from '../Button';
+import './styles.scss';
 
 export default function index() {
   return (
@@ -37,7 +37,7 @@ export default function index() {
             inpName='album-img'
         />
 
-        <Button>Dodaj album</Button>
+        <Button btnStyle="btn--full-width">Dodaj album</Button>
         </form>
     </div>
   );
