@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from 'react';
 import TopBar from './ListSettings';
 import Star from '../../assets/star.svg';
-import StarRemove from '../../assets/star-remove.svg';
 import Remove from '../../assets/cross.png';
-import Swipe from '../../assets/swipe-left.png'
+import Swipe from '../../assets/swipe-left.png';
 import './styles.scss';
 
 const List = ({albums, setAlbums}) => {
@@ -62,11 +61,10 @@ const List = ({albums, setAlbums}) => {
   
             <div className='card__actions'>
                 <button 
-                  className='actions__btn'
+                  className={`actions__btn ${album.favourite === false ? 'img-favourite' : 'img-favourite--active'}`}
                   onClick={() => handleAlbumEdit(album)}
                 >
-                  <img className='img-favourite img-favourite--active' src={Star} alt='Manage favourites' />
-                  <img className='img-favourite' src={StarRemove} alt='Manage favourites' />
+                  <img src={Star} alt='Manage favourites' />
                 </button>
   
                 <button
