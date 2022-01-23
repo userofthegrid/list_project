@@ -9,11 +9,14 @@
     max-width: 55%;
     margin-left: 5%;
     padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .list__cards-container {
     overflow-y: scroll;
-    height: 27.5rem;
+    height: auto;
+    max-height: 27rem;
 }
 
 .list__mobi-info {
@@ -231,6 +234,10 @@
     // * LIST SETTINGS COMPONENT QUERY
     // *
 
+    .list__settings {
+        margin: 0 auto 1rem;
+    }
+
     .settings__list-title {
         display: none;
     }
@@ -272,6 +279,7 @@
         animation: swipeAnimation 9s infinite;
         margin-top: -1.2rem;
         margin-left: 75%;
+        max-width: 3.5rem;
     }
 
     .list__cards-container {

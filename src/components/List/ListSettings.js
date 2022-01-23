@@ -6,12 +6,23 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './styles.scss';
+import './gridLayout.scss';
 
-export default function ListSettings({sorting, setSorting}) {
+export default function ListSettings({sorting, setSorting, listLayout, setListLayout}) {
 
   const sortChange = (event) => {
     setSorting(event.target.value);
   };
+
+  const viewList = () => {
+    localStorage.setItem("listLayout", 'layout--list');
+    setListLayout(localStorage.getItem('listLayout'));
+  }
+
+  const viewGrid = () => {
+    localStorage.setItem("listLayout", 'layout--grid');
+    setListLayout(localStorage.getItem('listLayout'));
+  }
 
   return (
     <div className='list__settings'>
@@ -33,11 +44,11 @@ export default function ListSettings({sorting, setSorting}) {
           </Select>
         </FormControl>
 
-        <button className='options__btn options__btn--active'>
+        <button className={`${listLayout === 'layout--list' ? 'options__btn options__btn--active' : 'options__btn'}`} onClick={viewList}>
           <img src={List} alt='Display as list' />
         </button>
 
-        <button className='options__btn'>
+        <button className={`${listLayout === 'layout--grid' ? 'options__btn options__btn--active' : 'options__btn'}`} onClick={viewGrid}>
           <img src={Grid} alt='Display as grid' />
         </button>
       </div>

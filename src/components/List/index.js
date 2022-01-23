@@ -8,6 +8,7 @@ import './styles.scss';
 const List = ({albums, setAlbums}) => {
 
   const [sorting, setSorting] = useState(!localStorage.getItem('sorting') ? 'id' : localStorage.getItem('sorting'));
+  const [listLayout, setListLayout] = useState('layout--list');
 
   useEffect(() => {
     localStorage.setItem("sorting", sorting);
@@ -24,7 +25,7 @@ const List = ({albums, setAlbums}) => {
       });
     } else if(currentSorting === 'date') {
       albums.sort((a, b) => {
-        return a.timeNow - b.timeNow;
+        return b.timeNow - a.timeNow;
       });
     } else if(currentSorting === 'id') {
       albums.sort((a, b) => {
@@ -34,6 +35,10 @@ const List = ({albums, setAlbums}) => {
 
     setAlbums((newAlbumsOrder) => [...newAlbumsOrder]);
   }, [sorting]);
+
+  useEffect(() => {
+  }, [listLayout]);
+  
 
   const handleAlbumEdit = ({ id }) => {
     const findAlbum = albums.find((album) => album.id === id);
@@ -57,9 +62,11 @@ const List = ({albums, setAlbums}) => {
         <ListSettings
           sorting={sorting}
           setSorting={setSorting}
+          listLayout={listLayout}
+          setListLayout={setListLayout}
         />
 
-        <div className='list__cards-container'>
+        <div className={`list__cards-container ${listLayout}`} >
 
         {albums.map((album) => (
           <div className='card' key={album.id}>
@@ -73,12 +80,12 @@ const List = ({albums, setAlbums}) => {
                   </p>
   
                   <p>
-                      <span>Wydano:</span>
+                      <span>Wydany:</span>
                       <span className='info-box__text'>{album.year}</span>
                   </p>
   
                   <p>
-                      <span>Utworów:</span>
+                      <span>Utwory:</span>
                       <span className='info-box__text'>{album.tracks}</span>
                   </p>
 
