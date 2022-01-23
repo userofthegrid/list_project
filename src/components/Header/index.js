@@ -1,9 +1,13 @@
 import React from 'react';
+import Languages from '../Language';
+import Logo from '../../assets/logo.png';
+import './styles.scss';
 
 export default function index() {
   return(
-    <div>
-        <img src='../../assets/logo.png' alt='FavMusicList logo' />
-    </div>
+    <header className='header'>
+        <img src={Logo} alt='FavMusicList logo' />
+        <Languages />
+    </header>
   );
 }

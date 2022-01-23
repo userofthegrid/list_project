@@ -1,0 +1,25 @@
+{
+    "title": "New album",
+    "description": "In the form below you can add information about the album which you want to add to your list.",
+    "inputs": {
+        "title": "Album name",
+        "year": "Year",
+        "tracks": "Number of tracks",
+        "image": "Link to the cover"
+    },
+    "submit": "Add an album",
+    "listName": "Album list",
+    "sortList": {
+        "label": "Sort by",
+        "option1": "Newest",
+        "option2": "Album ID",
+        "option3": "Album name"
+    },
+    "cardInfo": {
+        "title": "Album",
+        "year": "Year",
+        "tracks": "Tracks",
+        "favourite": "Fvourite"
+    },
+    "footer": "Go to the project on Github"
+}

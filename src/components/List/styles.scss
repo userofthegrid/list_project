@@ -1,0 +1,312 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.app__list {
+    max-width: 55%;
+    margin-left: 5%;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.list__cards-container {
+    overflow-y: auto;
+    height: auto;
+    max-height: 27.25rem;
+}
+
+.list__mobi-info {
+    display: none
+}
+
+.card {
+    @include flex-spread-X;
+    margin-bottom: .5rem;
+
+    &:hover .info__img {
+        filter: grayscale(1);
+    }
+}
+
+.card__info {
+    display: flex;
+    align-items: center;
+    background-color: $col_white;
+    border: .1rem solid $col_border;
+    border-radius: .3rem;
+    padding: .7rem;
+    width: 90%;
+}
+
+.info__img {
+    border-radius: .3rem;
+    min-width: 7rem;
+    width: 7rem;
+    height: 7rem;
+    background-image: url('https://raw.githubusercontent.com/userofthegrid/list_project/master/src/assets/no-picture.webp');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    transition: .5s;
+}
+
+.info__box {
+    margin-left: 1rem;
+
+    p {
+        display: flex;
+        align-items: center;
+
+        &:nth-of-type(4) span {
+            margin-top: 1rem;
+        }
+    }
+
+    .box__favourite-item {
+        opacity: 0;
+        pointer-events: none;
+        transition: .25s;
+    }
+
+    .box__favourite-item--active {
+        opacity: 1;
+        transition: .25s;
+    }
+
+    span {
+        color: $col_text_grey;
+        font-size: .85rem;
+        margin: .1rem 0;
+        display: inline-block;
+        
+        &:first-of-type {
+            width: 4.5rem;
+        }
+    }
+
+    .info-box__text {
+        color: $col_primary;
+        font-weight: 500;
+        width: calc(100% - 4.5rem);
+
+        &--favourite {
+            color: $col_secondary;
+            display: flex;
+            align-items: center;
+
+            img {
+                margin-left: .5rem;
+                margin-bottom: .15rem;
+                height: 1rem;
+            }
+        }
+    }
+}
+
+.card__actions {
+    @include flex-center-XY;
+    flex-direction: column;
+    background-color: $col_white;
+    border: .1rem solid $col_border;
+    border-radius: .3rem;
+    width: 7%;
+    min-width: 2rem;
+    margin: 0 1.5%;
+}
+
+.actions__btn {
+    background: transparent;
+    border: none;
+    width: 2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: .25s;
+
+    &:last-of-type {
+        opacity: .25;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.img-favourite {
+    opacity: .25;
+    transition: .25s;
+    
+    &:hover {
+        opacity: 1
+    }
+}
+
+.img-favourite--active {
+    opacity: 1;
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 1.6rem;
+        height: .1rem;
+        background: #000;
+        position: absolute;
+        top: 52%;
+        left: 52%;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+.list__settings {
+    @include flex-spread-X;
+    align-items: flex-end;
+    width: 50rem;
+    max-width: 100%;
+    padding-bottom: .1rem;
+    border-bottom: .1rem solid $col_line;
+    margin-bottom: 1rem;
+}
+
+.settings__list-title {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+    margin-bottom: .6rem;
+    font-weight: 500;
+}
+
+.settings__options {
+    display: flex;
+    align-items: flex-end;
+}
+
+.options__btn {
+    background: transparent;
+    border: none;
+    height: 1.8rem;
+    width: 1.8rem;
+    margin-left: .5rem;
+    cursor: pointer;
+    opacity: .33;
+    transition: .25s;
+    margin-bottom: .35rem;
+
+    &:first-of-type {
+        margin-left: 1.5rem;
+        margin-bottom: .4rem;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &--active {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    
+    .app__list {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .list__cards-container {
+        height: 100%;
+        max-height: 42rem;
+    }
+
+    .list__settings {
+        margin: 0 auto 1rem;
+    }
+
+    .settings__list-title {
+        display: none;
+    }
+
+    .settings__options {
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .options__btn:first-of-type {
+        margin-left: auto;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+    @keyframes swipeAnimation {
+        0%{transform: translateX(0) rotate(0); opacity: 1;}
+        10%{transform: translateX(2rem) rotate(30deg);}
+        20%{transform: translateX(0) rotate(0);}
+        30%{transform: translateX(2rem) rotate(30deg);}
+        40%{transform: translateX(0) rotate(0);}
+        50%{transform: translateX(2rem) rotate(30deg);}
+        60%{transform: translateX(0) rotate(0); opacity: 1;}
+        70%{transform: translateX(0) rotate(0); opacity: 0;}
+        90%{opacity: 0;}
+        100%{transform: translateX(0) rotate(0); opacity: 1;}
+    }
+
+    .list__mobi-info {
+        display: block;
+        animation: swipeAnimation 9s infinite;
+        margin-top: -1.2rem;
+        margin-left: 75%;
+        max-width: 3.5rem;
+    }
+
+    .list__cards-container {
+        display: flex;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+    .card {
+        width: 100%;
+        margin-right: 1rem;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    
+    .card__info {
+        width: 100%;
+        padding: .6rem;
+        margin-top: .2rem;
+    }
+
+    .info__box {
+
+        p {
+            align-items: flex-start;
+        }
+
+        span:first-of-type {
+            width: 4.5rem;
+        }
+
+        .info-box__text {
+            width: calc(100% - 4.5rem);
+        }
+    }
+
+    .card__actions {
+        height: 2rem;
+        width: 100%;
+        margin: 0;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .actions__btn {
+        margin: 0;
+        padding: 1rem 1.2rem;
+    }
+}

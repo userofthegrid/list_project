@@ -1,41 +1,45 @@
 @import './variables';
 
+:root {
+    font-size: 16px;
+}
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    scrollbar-color: $col_light_grey $col_white;
+    scrollbar-width: thin;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+html {
+    background: $col_background;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
+::-webkit-scrollbar {
+    width: .4rem;
 }
 
-select {
-    width: 3rem;
-    padding: .25rem;
-    font-size: .9rem;
-    border: 1px solid $col_white;
-    border-radius: .25rem;
-    height: 34px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+::-webkit-scrollbar-thumb {
+    background: $col_light_grey;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $col_line; 
+}
+
+::-webkit-scrollbar-track {
     background: $col_white;
 }
 
-select::-ms-expand { 
-    display: none;
+::-moz-selection {
+    color: $col_white;
+    background: $col_primary;
 }
 
-@media screen and (min-width:0\0) {
-    select {
-        background:none\9;
-        padding: 5px\9;
-    } 
+::selection {
+    color: $col_white;
+    background: $col_primary;
 }

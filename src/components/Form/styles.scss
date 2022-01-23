@@ -1,0 +1,78 @@
+@import '../../styles/variables';
+
+.container-form {
+    max-width: 40%;
+    padding-top: 2rem;
+}
+
+.form__title {
+    font-weight: 500;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 2rem;
+}
+
+.form__information {
+    width: 28rem;
+    line-height: 1.6rem;
+    max-width: 100%;
+    padding-bottom: 2.5rem;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: .1rem;
+        width: 60%;
+        background-color: $col_line;
+    }
+}
+
+.form__album-add {
+    margin-top: 2.5rem;
+    width: 32rem;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.TextField-without-border-radius fieldset {
+    border-radius: 0;
+}
+
+.add-task__input--long {
+    width: 100%;
+}
+
+.add-task__input--short {
+    width: calc(50% - .5rem);
+}
+
+@media only screen and (max-width: 1080px) {
+
+    .container-form {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-top: 1rem;
+    }
+
+    .form__title {
+        margin-bottom: 1rem;
+    }
+
+    .form__information {
+        display: none;
+    }
+
+    .form__album-add {
+        margin-top: 2rem;
+        width: 50rem;
+    }
+
+    .form__inp-box:last-of-type {
+        margin-bottom: 2.5rem;
+    }
+}

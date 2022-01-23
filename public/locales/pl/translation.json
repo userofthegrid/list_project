@@ -1,0 +1,24 @@
+{
+    "title": "Nowy album",
+    "description": "W formularzu poniżej możesz dodać informacje dotyczące albumu, który chcesz dodać do swojej listy.",
+    "inputs": {
+        "title": "Nazwa albumu",
+        "year": "Rok wydania",
+        "tracks": "Liczba utworów",
+        "image": "Link do okładki"
+    },
+    "submit": "Dodaj album",
+    "listName": "Lista albumów",
+    "sortList": {
+        "label": "Sortuj według",
+        "option1": "Najnowszy",
+        "option2": "ID albumu",
+        "option3": "Nazwa albumu"
+    },
+    "cardInfo": {
+        "year": "Wydany",
+        "tracks": "Utwory",
+        "favourite": "Ulubiony"
+    },
+    "footer": "Przejdź do projektu na Github"
+}

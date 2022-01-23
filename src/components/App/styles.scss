@@ -1,0 +1,27 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.app {
+    @include flex-spread-X;
+    align-items: flex-start;
+    padding: 2rem 2rem 2.5rem;
+    background-color: $col_background;
+    width: $container-width;
+    max-width: 100%;
+    margin: 2.5rem auto 0;
+    min-height: calc(100vh - 12rem);
+    color: $col_secondary;
+    font-size: clamp(.9rem, 3vw, 1.1rem);
+}
+
+@media only screen and (max-width: 1080px) {
+
+    .app {
+        @include flex-center-XY;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 2.5rem;
+        min-height: calc(100vh - 6rem);
+    }
+}
