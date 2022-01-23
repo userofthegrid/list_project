@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from "react";
 import List from '../../assets/list.svg';
 import Grid from '../../assets/grid.svg';
 import InputLabel from '@mui/material/InputLabel';
@@ -7,12 +7,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './styles.scss';
 
-export default function ListSettings() {
-
-  const [sort, setAge] = useState('');
+export default function ListSettings({sorting, setSorting}) {
 
   const sortChange = (event) => {
-    setAge(event.target.value);
+    setSorting(event.target.value);
   };
 
   return (
@@ -20,19 +18,18 @@ export default function ListSettings() {
       <h3 className='settings__list-title'>Lista albumów</h3>
       <div className='settings__options'>
 
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="demo-simple-select-standard-label" sx={{ fontSize: 14 }}>Sortuj po</InputLabel>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 135 }}>
+          <InputLabel id="select-standard-label">Sortuj po</InputLabel>
           <Select
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
-            value={sort}
+            value={sorting}
             onChange={sortChange}
-            label="Age"
-            sx={{ fontSize: 14 }}
+            label=""
           >
-            <MenuItem value={10} sx={{ fontSize: 14 }}>ID albumu</MenuItem>
-            <MenuItem value={20} sx={{ fontSize: 14 }}>Data dodania</MenuItem>
-            <MenuItem value={30} sx={{ fontSize: 14 }}>Nazwa albumu</MenuItem>
+            <MenuItem value={'date'}>Data dodania</MenuItem>
+            <MenuItem value={'id'} defaultChecked>ID albumu</MenuItem>
+            <MenuItem value={'title'}>Nazwa albumu</MenuItem>
           </Select>
         </FormControl>
 

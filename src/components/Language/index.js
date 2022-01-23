@@ -8,7 +8,7 @@ import TranslateIcon from '@mui/icons-material/Translate';
 
 export default function Language() {
 
-  const [Language, setLanguage] = useState('');
+  const [language, setLanguage] = useState('');
 
   const handleChange = (event) => {
     setLanguage(event.target.value);
@@ -22,7 +22,7 @@ export default function Language() {
           defaultValue={'pl'}
           labelId="select-label"
           id="simple-select"
-          value={Language}
+          value={language}
           label="Język"
           onChange={handleChange}
         >

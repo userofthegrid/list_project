@@ -21,7 +21,7 @@ const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImag
 
     const onAddAlbumSubmit = (event) => {
         event.preventDefault();
-        setAlbums([...albums, {id: uuidv4(), title: title, year: year, tracks: tracks, image: image, favourite: false}]);
+        setAlbums([...albums, {id: uuidv4(), title: title, year: year, tracks: tracks, image: image, favourite: false, timeNow: Date.now()}]);
         setTitle('');
         setYear('');
         setTracks('');

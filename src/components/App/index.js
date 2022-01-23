@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import Placeholder from '../../assets/placeholder.webp';
 import Form from '../Form';
 import List from '../List';
 import './styles.scss';

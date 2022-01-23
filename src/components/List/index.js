@@ -1,5 +1,5 @@
-import React from 'react';
-import TopBar from './ListSettings';
+import { useState, useEffect } from 'react';
+import ListSettings from './ListSettings';
 import Star from '../../assets/star.svg';
 import Remove from '../../assets/cross.png';
 import Swipe from '../../assets/swipe-left.png';
@@ -7,18 +7,46 @@ import './styles.scss';
 
 const List = ({albums, setAlbums}) => {
 
+  const [sorting, setSorting] = useState(!localStorage.getItem('sorting') ? 'id' : localStorage.getItem('sorting'));
+
+  useEffect(() => {
+    localStorage.setItem("sorting", sorting);
+    const currentSorting = localStorage.getItem('sorting');
+
+    if (currentSorting === 'title') {
+      albums.sort((a, b) => {
+        let fa = a.title.toLowerCase(),
+            fb = b.title.toLowerCase();
+    
+        if (fa < fb) { return -1;}
+        if (fa > fb) { return 1;}
+        return 0;
+      });
+    } else if(currentSorting === 'date') {
+      albums.sort((a, b) => {
+        return a.timeNow - b.timeNow;
+      });
+    } else if(currentSorting === 'id') {
+      albums.sort((a, b) => {
+        return a.id > b.id;
+      });
+    }
+
+    const newAlbums = albums;
+    setAlbums((newAlbums) => [...newAlbums]);
+  }, [sorting]);
+
   const handleAlbumEdit = ({ id }) => {
     const findAlbum = albums.find((album) => album.id === id);
 
-    updateAlbum(findAlbum.title, findAlbum.id, findAlbum.year, findAlbum.tracks, findAlbum.image, !findAlbum.favourite)
+    updateAlbum(findAlbum.title, findAlbum.id, findAlbum.year, findAlbum.tracks, findAlbum.image, !findAlbum.favourite, findAlbum.timeNow)
   }
 
-  const updateAlbum = (title, id, year, tracks, image, favourite) => {
+  const updateAlbum = (title, id, year, tracks, image, favourite, timeNow) => {
     const newAlbum = albums.map((album) =>
-        album.id === id ? { title, id, year, tracks, image, favourite } : album
+        album.id === id ? { title, id, year, tracks, image, favourite, timeNow } : album
     )
     setAlbums(newAlbum);
-    console.log(newAlbum);
   }
 
   const handleAlbumDelete = ({ id }) => {
@@ -27,7 +55,10 @@ const List = ({albums, setAlbums}) => {
 
   return (
     <div className='app__list'>
-        <TopBar />
+        <ListSettings
+          sorting={sorting}
+          setSorting={setSorting}
+        />
 
         <div className='list__cards-container'>
 
