@@ -11,7 +11,7 @@
     "listName": "Album list",
     "sortList": {
         "label": "Sort by",
-        "option1": "Date added",
+        "option1": "Newest",
         "option2": "Album ID",
         "option3": "Album name"
     },

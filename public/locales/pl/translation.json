@@ -10,8 +10,8 @@
     "submit": "Dodaj album",
     "listName": "Lista albumów",
     "sortList": {
-        "label": "Sortuj po",
-        "option1": "Data dodania",
+        "label": "Sortuj według",
+        "option1": "Najnowszy",
         "option2": "ID albumu",
         "option3": "Nazwa albumu"
     },
