@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Context} from '../Store';
+import { Context } from '../Store';
 import { useTranslation } from "react-i18next";
 import ListSettings from './ListSettings';
 import Star from '../../assets/star.svg';
@@ -9,15 +9,16 @@ import './styles.scss';
 
 const List = ({albums, setAlbums}) => {
 
-  const [state] = useContext(Context);
+  const { langState } = useContext(Context);
+  const { sorting } = useContext(Context);
+  const { setSorting } = useContext(Context);
 
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-      i18n.changeLanguage(state);
-  }, [i18n, state]);
+      i18n.changeLanguage(langState);
+  }, [i18n, langState]);
 
-  const [sorting, setSorting] = useState(!localStorage.getItem('sorting') ? 'id' : localStorage.getItem('sorting'));
   const [listLayout, setListLayout] = useState('layout--list');
 
   useEffect(() => {

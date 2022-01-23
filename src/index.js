@@ -1,21 +1,11 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/general.scss';
 import App from './components/App';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Store from './components/Store';
-import './i18n';
+import './styles/general.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
-      <Store>
-        <Header />
-        <App />
-        <Footer />
-      </Store>
-    </Suspense>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

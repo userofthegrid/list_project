@@ -4,15 +4,16 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TranslateIcon from '@mui/icons-material/Translate';
-import {Context} from '../Store';
+import { Context } from '../Store';
 import './styles.scss';
 
 export default function Language() {
 
-  const [state, setState] = useContext(Context);
+  const { langState } = useContext(Context);
+  const { setLangState } = useContext(Context);
 
   const handleChange = (event) => {
-    setState(event.target.value)
+    setLangState(event.target.value)
   };
 
   return (
@@ -24,7 +25,7 @@ export default function Language() {
           defaultValue={'pl'}
           labelId="select-label"
           id="simple-select"
-          value={state}
+          value={langState}
           label="Język"
           onChange={handleChange}
         >

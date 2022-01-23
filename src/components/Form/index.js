@@ -9,13 +9,13 @@ import './styles.scss';
 
 const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImage, albums, setAlbums}) => {
 
-    const [state] = useContext(Context);
+    const { langState } = useContext(Context);
 
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
-        i18n.changeLanguage(state);
-    }, [i18n, state]);
+        i18n.changeLanguage(langState);
+    }, [i18n, langState]);
 
     const onAlbumChange = (event) => {
         setTitle(event.target.value)
