@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useEffect, useContext} from 'react';
 import {v4 as uuidv4} from "uuid";
 import Button from '../Button';
 import './styles.scss';
 import TextField from '@mui/material/TextField';
+import {Context} from '../Store';
+import { useTranslation } from "react-i18next";
+import './styles.scss';
 
 const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImage, albums, setAlbums}) => {
+
+    const [state, setState] = useContext(Context);
+
+    const { t, i18n } = useTranslation();
+
+    useEffect(() => {
+        i18n.changeLanguage(state);
+    }, [state]);
 
     const onAlbumChange = (event) => {
         setTitle(event.target.value)
@@ -31,11 +42,10 @@ const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImag
 
     return (
         <div className='container-form'>
-            <h2 className='form__title'>Nowy album</h2>
+            <h2 className='form__title'>{t("title")}</h2>
 
             <p className='form__information'>
-                W formularzu poniżej możesz dodać informacje dotyczące
-                albumu, który chcesz dodać do swojej listy.
+                {t("description")}
             </p>
 
             <form 
@@ -44,8 +54,7 @@ const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImag
             >
                 <TextField
                     className='add-task__input add-task__input--long'
-
-                    label='Nazwa albumu'
+                    label={t("inputs.title")}
                     variant="outlined" 
                     size="smalll"
                     value={title}
@@ -54,7 +63,7 @@ const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImag
                 />
                 <TextField
                     className='add-task__input add-task__input--short'
-                    label='Rok wydania'
+                    label={t("inputs.year")}
                     variant="outlined" 
                     size="smalll"
                     value={year}
@@ -63,7 +72,7 @@ const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImag
                 />
                 <TextField
                     className='add-task__input add-task__input--short'
-                    label='Liczba utworów'
+                    label={t("inputs.tracks")}
                     variant="outlined" 
                     size="smalll"
                     value={tracks}
@@ -72,7 +81,7 @@ const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImag
                 />
                 <TextField
                     className='add-task__input add-task__input--long'
-                    label='Link do okładki'
+                    label={t("inputs.image")}
                     variant="outlined" 
                     size="smalll"
                     value={image}
@@ -83,7 +92,7 @@ const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImag
                     type='submit'
                     onClick={onAddAlbumSubmit}
                 >
-                    Dodaj album
+                    {t("submit")}
                 </Button>
             </form>
         </div>

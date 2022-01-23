@@ -1,14 +1,24 @@
-import React from "react";
+import React, {useEffect, useContext} from 'react';
 import List from '../../assets/list.svg';
 import Grid from '../../assets/grid.svg';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {Context} from '../Store';
+import { useTranslation } from "react-i18next";
 import './styles.scss';
 import './gridLayout.scss';
 
 export default function ListSettings({sorting, setSorting, listLayout, setListLayout}) {
+
+  const [state, setState] = useContext(Context);
+
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+      i18n.changeLanguage(state);
+  }, [state]);
 
   const sortChange = (event) => {
     setSorting(event.target.value);
@@ -26,11 +36,11 @@ export default function ListSettings({sorting, setSorting, listLayout, setListLa
 
   return (
     <div className='list__settings'>
-      <h3 className='settings__list-title'>Lista albumów</h3>
+      <h3 className='settings__list-title'>{t("listName")}</h3>
       <div className='settings__options'>
 
         <FormControl variant="standard" sx={{ m: 1, minWidth: 135 }}>
-          <InputLabel id="select-standard-label">Sortuj po</InputLabel>
+          <InputLabel id="select-standard-label">{t("sortList.label")}</InputLabel>
           <Select
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
@@ -38,9 +48,9 @@ export default function ListSettings({sorting, setSorting, listLayout, setListLa
             onChange={sortChange}
             label=""
           >
-            <MenuItem value={'date'}>Data dodania</MenuItem>
-            <MenuItem value={'id'} defaultChecked>ID albumu</MenuItem>
-            <MenuItem value={'title'}>Nazwa albumu</MenuItem>
+            <MenuItem value={'date'}>{t("sortList.option1")}</MenuItem>
+            <MenuItem value={'id'} defaultChecked>{t("sortList.option2")}</MenuItem>
+            <MenuItem value={'title'}>{t("sortList.option3")}</MenuItem>
           </Select>
         </FormControl>
 

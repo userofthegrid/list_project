@@ -4,12 +4,12 @@
 .app {
     @include flex-spread-X;
     align-items: flex-start;
-    padding: 1.5rem 2rem 2.5rem;
+    padding: 2rem 2rem 2.5rem;
     background-color: $col_background;
     width: $container-width;
     max-width: 100%;
     margin: 2.5rem auto 0;
-    min-height: calc(100vh - 10rem);
+    min-height: calc(100vh - 12rem);
     color: $col_secondary;
     font-size: clamp(.9rem, 3vw, 1.1rem);
 }

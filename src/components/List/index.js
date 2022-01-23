@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import {Context} from '../Store';
+import { useTranslation } from "react-i18next";
 import ListSettings from './ListSettings';
 import Star from '../../assets/star.svg';
 import Remove from '../../assets/cross.png';
@@ -6,6 +8,14 @@ import Swipe from '../../assets/swipe-left.png';
 import './styles.scss';
 
 const List = ({albums, setAlbums}) => {
+
+  const [state, setState] = useContext(Context);
+
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+      i18n.changeLanguage(state);
+  }, [state]);
 
   const [sorting, setSorting] = useState(!localStorage.getItem('sorting') ? 'id' : localStorage.getItem('sorting'));
   const [listLayout, setListLayout] = useState('layout--list');
@@ -80,17 +90,17 @@ const List = ({albums, setAlbums}) => {
                   </p>
   
                   <p>
-                      <span>Wydany:</span>
+                      <span>{t("cardInfo.year")}:</span>
                       <span className='info-box__text'>{album.year}</span>
                   </p>
   
                   <p>
-                      <span>Utwory:</span>
+                      <span>{t("cardInfo.tracks")}:</span>
                       <span className='info-box__text'>{album.tracks}</span>
                   </p>
 
                   <p className={`${album.favourite === false ? "box__favourite-item" : "box__favourite-item--active"}`}>
-                      <span className='info-box__span--favourite'>Ulubiony:</span>
+                      <span className='info-box__span--favourite'>{t("cardInfo.favourite")}:</span>
                       <span className='info-box__text info-box__text--favourite'>Best of the best <img src={Star} alt='Favourite' /></span>
                   </p>
               </div>
