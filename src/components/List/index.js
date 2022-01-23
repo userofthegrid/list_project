@@ -32,8 +32,7 @@ const List = ({albums, setAlbums}) => {
       });
     }
 
-    const newAlbums = albums;
-    setAlbums((newAlbums) => [...newAlbums]);
+    setAlbums((newAlbumsOrder) => [...newAlbumsOrder]);
   }, [sorting]);
 
   const handleAlbumEdit = ({ id }) => {
