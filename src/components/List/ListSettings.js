@@ -12,13 +12,13 @@ import './gridLayout.scss';
 
 export default function ListSettings({sorting, setSorting, listLayout, setListLayout}) {
 
-  const [state, setState] = useContext(Context);
+  const [state] = useContext(Context);
 
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-      i18n.changeLanguage(state);
-  }, [state]);
+    i18n.changeLanguage(state);
+}, [i18n, state]);
 
   const sortChange = (event) => {
     setSorting(event.target.value);

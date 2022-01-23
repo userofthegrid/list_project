@@ -1,10 +1,6 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
-// *
-// * LIST COMPONENT
-// *
-
 .app__list {
     max-width: 55%;
     margin-left: 5%;
@@ -16,7 +12,7 @@
 .list__cards-container {
     overflow-y: scroll;
     height: auto;
-    max-height: 27rem;
+    max-height: 27.25rem;
 }
 
 .list__mobi-info {
@@ -164,10 +160,6 @@
     }
 }
 
-// *
-// * LIST SETTINGS COMPONENT
-// *
-
 .list__settings {
     @include flex-spread-X;
     align-items: flex-end;
@@ -215,10 +207,6 @@
 }
 
 @media only screen and (max-width: 1080px) {
-
-    // *
-    // * LIST COMPONENT QUERY
-    // *
     
     .app__list {
         max-width: 100%;
@@ -229,10 +217,6 @@
         height: 100%;
         max-height: 42rem;
     }
-
-    // *
-    // * LIST SETTINGS COMPONENT QUERY
-    // *
 
     .list__settings {
         margin: 0 auto 1rem;
@@ -256,10 +240,6 @@
 }
 
 @media only screen and (max-width: 480px) {
-
-    // *
-    // * LIST COMPONENT QUERY
-    // *
 
     @keyframes swipeAnimation {
         0%{transform: translateX(0) rotate(0); opacity: 1;}

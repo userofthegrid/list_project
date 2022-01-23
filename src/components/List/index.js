@@ -9,13 +9,13 @@ import './styles.scss';
 
 const List = ({albums, setAlbums}) => {
 
-  const [state, setState] = useContext(Context);
+  const [state] = useContext(Context);
 
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
       i18n.changeLanguage(state);
-  }, [state]);
+  }, [i18n, state]);
 
   const [sorting, setSorting] = useState(!localStorage.getItem('sorting') ? 'id' : localStorage.getItem('sorting'));
   const [listLayout, setListLayout] = useState('layout--list');

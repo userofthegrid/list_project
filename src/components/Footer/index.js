@@ -5,13 +5,13 @@ import './styles.scss'
 
 export default function Footer() {
 
-  const [state, setState] = useContext(Context);
+  const [state] = useContext(Context);
 
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-      i18n.changeLanguage(state);
-  }, [state]);
+    i18n.changeLanguage(state);
+  }, [i18n, state]);
 
   return (
       <a className='footer' href='https://github.com/userofthegrid/list_project'>{t("footer")}</a>
