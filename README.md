@@ -4,6 +4,7 @@ Next changes to come in near future:
 - preparing code for useReducer hook
 - moving logic away from presentation part of components
 - adding more features
+- due to more features adding testing (for author's convenience reasons ;) )
 
 Do you want me to add something to this app? Let me know: m.noga@email.com
 
