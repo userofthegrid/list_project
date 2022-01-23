@@ -10,9 +10,13 @@ import { useTranslation } from "react-i18next";
 import './styles.scss';
 import './gridLayout.scss';
 
-export default function ListSettings({sorting, setSorting, listLayout, setListLayout}) {
+export default function ListSettings() {
 
   const { langState } = useContext(Context);
+  const { sorting } = useContext(Context);
+  const { setSorting } = useContext(Context);
+  const { listLayout } = useContext(Context);
+  const { setListLayout } = useContext(Context);
 
   const { t, i18n } = useTranslation();
 

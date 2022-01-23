@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { Context } from '../Store';
 import { useTranslation } from "react-i18next";
 import ListSettings from './ListSettings';
@@ -7,11 +7,13 @@ import Remove from '../../assets/cross.png';
 import Swipe from '../../assets/swipe-left.png';
 import './styles.scss';
 
-const List = ({albums, setAlbums}) => {
+const List = () => {
 
   const { langState } = useContext(Context);
+  const { albums } = useContext(Context);
+  const { setAlbums } = useContext(Context);
   const { sorting } = useContext(Context);
-  const { setSorting } = useContext(Context);
+  const { listLayout } = useContext(Context);
 
   const { t, i18n } = useTranslation();
 
@@ -19,29 +21,36 @@ const List = ({albums, setAlbums}) => {
       i18n.changeLanguage(langState);
   }, [i18n, langState]);
 
-  const [listLayout, setListLayout] = useState('layout--list');
-
   useEffect(() => {
     localStorage.setItem("sorting", sorting);
     const currentSorting = localStorage.getItem('sorting');
 
-    if (currentSorting === 'title') {
-      albums.sort((a, b) => {
-        let fa = a.title.toLowerCase(),
-            fb = b.title.toLowerCase();
-    
-        if (fa < fb) { return -1;}
-        if (fa > fb) { return 1;}
-        return 0;
-      });
-    } else if(currentSorting === 'date') {
-      albums.sort((a, b) => {
-        return b.timeNow - a.timeNow;
-      });
-    } else if(currentSorting === 'id') {
-      albums.sort((a, b) => {
-        return a.id > b.id;
-      });
+    const sortVal = currentSorting;
+    switch (sortVal) {
+      case 'title':
+        albums.sort((a, b) => {
+          let fa = a.title.toLowerCase(),
+              fb = b.title.toLowerCase();
+      
+          if (fa < fb) { return -1;}
+          if (fa > fb) { return 1;}
+          return 0;
+        });
+        break;
+      case 'date':
+        albums.sort((a, b) => {
+          return b.timeNow - a.timeNow;
+        });
+        break;
+      case 'id':
+        albums.sort((a, b) => {
+          return a.id > b.id;
+        });
+        break;
+      default:
+        albums.sort((a, b) => {
+          return a.id > b.id;
+        });
     }
 
     setAlbums((newAlbumsOrder) => [...newAlbumsOrder]);
@@ -70,12 +79,7 @@ const List = ({albums, setAlbums}) => {
 
   return (
     <div className='app__list'>
-        <ListSettings
-          sorting={sorting}
-          setSorting={setSorting}
-          listLayout={listLayout}
-          setListLayout={setListLayout}
-        />
+        <ListSettings/>
 
         <div className={`list__cards-container ${listLayout}`} >
 
@@ -99,8 +103,7 @@ const List = ({albums, setAlbums}) => {
                       <span>{t("cardInfo.tracks")}:</span>
                       <span className='info-box__text'>{album.tracks}</span>
                   </p>
-
-                  <p className={`${album.favourite === false ? "box__favourite-item" : "box__favourite-item--active"}`}>
+                  <p className={!album.favourite ? "box__favourite-item" : "box__favourite-item--active"}>
                       <span className='info-box__span--favourite'>{t("cardInfo.favourite")}:</span>
                       <span className='info-box__text info-box__text--favourite'>Best of the best <img src={Star} alt='Favourite' /></span>
                   </p>

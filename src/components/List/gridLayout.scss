@@ -82,7 +82,7 @@
     .layout--grid {
         flex-wrap: nowrap;
         overflow-y: hidden;
-        overflow-x: scroll;
+        overflow-x: auto;
         justify-content: flex-start;
         max-width: 100%;
 

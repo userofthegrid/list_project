@@ -17,6 +17,7 @@ const App = () => {
   const [image, setImage] = useState('');
   const [albums, setAlbums] = useState(initialState);
   const [sorting, setSorting] = useState(!localStorage.getItem('sorting') ? 'id' : localStorage.getItem('sorting'));
+  const [listLayout, setListLayout] = useState('layout--list');
 
   useEffect(() => {
     localStorage.setItem("albums", JSON.stringify(albums));
@@ -25,25 +26,11 @@ const App = () => {
   return (
 
     <Suspense fallback={<div>Loading...</div>}>
-      <Context.Provider value={{ langState, setLangState, sorting, setSorting, albums }}>
+      <Context.Provider value={{ langState, setLangState, sorting, setSorting, albums, setAlbums, title, setTitle, year, setYear, tracks, setTracks, image, setImage, listLayout, setListLayout }}>
         <Header />
         <main className="app">
-          <Form 
-            title={title}
-            setTitle={setTitle}
-            year={year}
-            setYear={setYear}
-            tracks={tracks}
-            setTracks={setTracks}
-            image={image}
-            setImage={setImage}
-            albums={albums}
-            setAlbums={setAlbums}
-          />
-          <List 
-            albums={albums}
-            setAlbums={setAlbums}
-          />
+          <Form />
+          <List />
         </main>
         <Footer />
       </Context.Provider>

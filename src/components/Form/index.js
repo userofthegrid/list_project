@@ -7,9 +7,19 @@ import {Context} from '../Store';
 import { useTranslation } from "react-i18next";
 import './styles.scss';
 
-const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImage, albums, setAlbums}) => {
+const Form = () => {
 
     const { langState } = useContext(Context);
+    const { title } = useContext(Context);
+    const { setTitle } = useContext(Context);
+    const { year } = useContext(Context);
+    const { setYear } = useContext(Context);
+    const { tracks } = useContext(Context);
+    const { setTracks } = useContext(Context);
+    const { image } = useContext(Context);
+    const { setImage } = useContext(Context);
+    const { albums } = useContext(Context);
+    const { setAlbums } = useContext(Context);
 
     const { t, i18n } = useTranslation();
 
@@ -37,6 +47,7 @@ const Form = ({title, setTitle, year, setYear, tracks, setTracks, image, setImag
         setYear('');
         setTracks('');
         setImage('');
+        window.location.reload(false);
     };
      
 

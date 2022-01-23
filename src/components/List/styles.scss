@@ -10,7 +10,7 @@
 }
 
 .list__cards-container {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: auto;
     max-height: 27.25rem;
 }
@@ -265,7 +265,7 @@
     .list__cards-container {
         display: flex;
         overflow-y: hidden;
-        overflow-x: scroll;
+        overflow-x: auto;
     }
 
     .card {
