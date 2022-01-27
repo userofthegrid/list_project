@@ -1,4 +1,4 @@
-import { useContext} from 'react';
+import {useContext} from 'react';
 import {Context} from '../Store';
 
 const ListSettingsLogic = () => {
@@ -9,7 +9,7 @@ const ListSettingsLogic = () => {
     const { setListLayout } = useContext(Context);
 
     const sortChange = (event) => {
-        setSorting(event.target.value);
+        setSorting(JSON.stringify({sortBy: event.target.value, forceUpdate: 0}));
     };
 
     const viewList = () => {

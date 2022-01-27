@@ -25,7 +25,7 @@ const ListSettings = () => {
           <Select
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
-            value={sorting}
+            value={!JSON.parse(sorting).sortBy ? 'title' : JSON.parse(sorting).sortBy}
             onChange={sortChange}
             label=""
           >

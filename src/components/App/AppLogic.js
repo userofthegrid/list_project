@@ -12,7 +12,7 @@ const AppLogic = () => {
         image: ""
     })
     const [albums, setAlbums] = useState(initialState);
-    const [sorting, setSorting] = useState(!localStorage.getItem('sorting') ? 'id' : localStorage.getItem('sorting'));
+    const [sorting, setSorting] = useState(!localStorage.getItem('sorting') ? JSON.stringify({sortBy: 'title', forceUpdate: 0}) : localStorage.getItem('sorting'));
     const [listLayout, setListLayout] = useState('layout--list');
 
     useEffect(() => {

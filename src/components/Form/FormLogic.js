@@ -8,6 +8,8 @@ const FormLogic = () => {
     const { setInpState } = useContext(Context);
     const { albums } = useContext(Context);
     const { setAlbums } = useContext(Context);
+    const { sorting } = useContext(Context);
+    const { setSorting } = useContext(Context);
 
     const handleInpChange = (e) => {
         const inpValue = e.target.value;
@@ -25,8 +27,11 @@ const FormLogic = () => {
             year: "",
             tracks: "",
             image: ""
-        })
-        window.location.reload(false);
+        });
+        const currentSorting = JSON.parse(sorting).sortBy;
+        console.log(currentSorting);
+        const forceRefresh = JSON.parse(sorting).forceUpdate + 1;
+        setSorting(JSON.stringify({sortBy: currentSorting, forceUpdate: forceRefresh}));
     };
 
     return { inpState, handleInpChange, onAddAlbumSubmit }

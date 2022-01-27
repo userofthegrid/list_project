@@ -12,7 +12,7 @@ const ListLogic = () => {
         localStorage.setItem("sorting", sorting);
         const currentSorting = localStorage.getItem('sorting');
 
-        const sortVal = currentSorting;
+        const sortVal = JSON.parse(currentSorting).sortBy;
         switch (sortVal) {
         case 'title':
             albums.sort((a, b) => {
