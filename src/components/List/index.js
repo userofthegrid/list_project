@@ -1,81 +1,17 @@
-import React, {useEffect, useContext} from 'react';
-import { Context } from '../Store';
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import Translate from '../../hooks/Translate';
+import ListLogic from './ListLogic';
 import ListSettings from './ListSettings';
 import Star from '../../assets/star.svg';
 import Remove from '../../assets/cross.png';
 import Swipe from '../../assets/swipe-left.png';
+import NoImg from '../../assets/placeholder.webp';
 import './styles.scss';
 
 const List = () => {
 
-  const { langState } = useContext(Context);
-  const { albums } = useContext(Context);
-  const { setAlbums } = useContext(Context);
-  const { sorting } = useContext(Context);
-  const { listLayout } = useContext(Context);
-
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-      i18n.changeLanguage(langState);
-  }, [i18n, langState]);
-
-  useEffect(() => {
-    localStorage.setItem("sorting", sorting);
-    const currentSorting = localStorage.getItem('sorting');
-
-    const sortVal = currentSorting;
-    switch (sortVal) {
-      case 'title':
-        albums.sort((a, b) => {
-          let fa = a.title.toLowerCase(),
-              fb = b.title.toLowerCase();
-      
-          if (fa < fb) { return -1;}
-          if (fa > fb) { return 1;}
-          return 0;
-        });
-        break;
-      case 'date':
-        albums.sort((a, b) => {
-          return b.timeNow - a.timeNow;
-        });
-        break;
-      case 'id':
-        albums.sort((a, b) => {
-          return a.id > b.id;
-        });
-        break;
-      default:
-        albums.sort((a, b) => {
-          return a.id > b.id;
-        });
-    }
-
-    setAlbums((newAlbumsOrder) => [...newAlbumsOrder]);
-  }, [sorting]);
-
-  useEffect(() => {
-  }, [listLayout]);
-  
-
-  const handleAlbumEdit = ({ id }) => {
-    const findAlbum = albums.find((album) => album.id === id);
-
-    updateAlbum(findAlbum.title, findAlbum.id, findAlbum.year, findAlbum.tracks, findAlbum.image, !findAlbum.favourite, findAlbum.timeNow)
-  }
-
-  const updateAlbum = (title, id, year, tracks, image, favourite, timeNow) => {
-    const newAlbum = albums.map((album) =>
-        album.id === id ? { title, id, year, tracks, image, favourite, timeNow } : album
-    )
-    setAlbums(newAlbum);
-  }
-
-  const handleAlbumDelete = ({ id }) => {
-    setAlbums(albums.filter((album) => album.id !== id));
-  }
+  const { t } = Translate();
+  const { albums, listLayout, handleAlbumEdit, handleAlbumDelete } = ListLogic();
 
   return (
     <div className='app__list'>
@@ -86,7 +22,7 @@ const List = () => {
         {albums.map((album) => (
           <div className='card' key={album.id}>
             <div className='card__info'>
-              <div className='info__img' style={{ backgroundImage: `url('${album.image[0] ? album.image : 'https://raw.githubusercontent.com/userofthegrid/list_project/master/src/assets/no-picture.webp'}')`}}></div>
+              <div className='info__img' style={{ backgroundImage: `url('${album.image[0] ? album.image : NoImg}')`}}></div>
               
               <div className='info__box'>
                   <p>
