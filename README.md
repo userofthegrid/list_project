@@ -1,14 +1,12 @@
 # From author
 
 Next changes to come in near future:
-- preparing code for useReducer hook
-- moving logic away from presentation part of components
-- adding more features
+- adding more features,
 - due to more features adding testing (for author's convenience reasons ;) )
 
 Do you want me to add something to this app? Let me know: m.noga@email.com
 
-## It's not a bug, it's a feature!
+## It's not a bug, it's a feature! :)
 
 This app uses local storage, maybe you want to add only album name or leave everything empty it's your app and your choice (no validation needed).
 

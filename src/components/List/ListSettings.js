@@ -1,42 +1,19 @@
-import React, {useEffect, useContext} from 'react';
+import React from 'react';
+import Translate from '../../hooks/Translate';
+import ListSettingsLogic from './ListSettingsLogic'
 import List from '../../assets/list.svg';
 import Grid from '../../assets/grid.svg';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {Context} from '../Store';
-import { useTranslation } from "react-i18next";
 import './styles.scss';
 import './gridLayout.scss';
 
-export default function ListSettings() {
+const ListSettings = () => {
 
-  const { langState } = useContext(Context);
-  const { sorting } = useContext(Context);
-  const { setSorting } = useContext(Context);
-  const { listLayout } = useContext(Context);
-  const { setListLayout } = useContext(Context);
-
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-      i18n.changeLanguage(langState);
-  }, [i18n, langState]);
-
-  const sortChange = (event) => {
-    setSorting(event.target.value);
-  };
-
-  const viewList = () => {
-    localStorage.setItem("listLayout", 'layout--list');
-    setListLayout(localStorage.getItem('listLayout'));
-  }
-
-  const viewGrid = () => {
-    localStorage.setItem("listLayout", 'layout--grid');
-    setListLayout(localStorage.getItem('listLayout'));
-  }
+  const { t } = Translate();
+  const { sorting, listLayout, sortChange, viewList, viewGrid } = ListSettingsLogic();
 
   return (
     <div className='list__settings'>
@@ -69,3 +46,5 @@ export default function ListSettings() {
     </div>
   );
 }
+
+export default ListSettings;

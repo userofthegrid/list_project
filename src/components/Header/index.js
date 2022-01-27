@@ -3,7 +3,7 @@ import Languages from '../Language';
 import Logo from '../../assets/logo.png';
 import './styles.scss';
 
-export default function index() {
+const Header = () => {
   return(
     <header className='header'>
         <img src={Logo} alt='FavMusicList logo' />
@@ -11,3 +11,5 @@ export default function index() {
     </header>
   );
 }
+
+export default Header;

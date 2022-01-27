@@ -1,20 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
+import LanguageLogic from './LanguageLogic'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TranslateIcon from '@mui/icons-material/Translate';
-import { Context } from '../Store';
 import './styles.scss';
 
 export default function Language() {
 
-  const { langState } = useContext(Context);
-  const { setLangState } = useContext(Context);
-
-  const handleChange = (event) => {
-    setLangState(event.target.value)
-  };
+  const { langState, handleChange } = LanguageLogic();
 
   return (
 
