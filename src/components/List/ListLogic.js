@@ -3,7 +3,6 @@ import { Context } from '../Store';
 
 const ListLogic = () => {
   
-    const { langState } = useContext(Context);
     const { albums } = useContext(Context);
     const { setAlbums } = useContext(Context);
     const { sorting } = useContext(Context);
